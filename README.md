@@ -1,6 +1,11 @@
 # vue-koa-demo
 
-> vue.js + koa.js full stack demo
+> vue.js + koa.js full stack demo for a user logined TodoList demo
+
+## TODO:
+- Save todo list items to server
+- Token verify on server
+- Deploy code
 
 ## Build Setup
 
