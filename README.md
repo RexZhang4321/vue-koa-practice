@@ -7,6 +7,12 @@
 - Token verify on server
 - Deploy code
 
+## Architecture:
+
+- Server: koa
+- Front End: Vue.js@2, Element-UI
+- Database: Mongodb
+
 ## Build Setup
 
 ``` bash

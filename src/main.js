@@ -42,6 +42,7 @@ router.beforeEach((to, from, next) => {
     next();
   } else {
     if (token != 'null' && token != null) {
+      Vue.prototype.$http.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       next();
     } else {
       next('/');
