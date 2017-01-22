@@ -65,6 +65,7 @@ export default {
       this.id = '';
       this.name = ''
     }
+    this.getTodolist();
   },
 
   data () {
@@ -100,9 +101,25 @@ export default {
       }
       let obj = {
         status: false,
-        content: this.todos
+        content: this.todos,
+        username: this.name
       }
-      this.list.push(obj);
+      // add new todo list item
+      this.$http.post('/api/todolist', obj)
+        .then((res) => {
+          if(res.status == 200) {
+            this.$message({
+              type: 'success',
+              message: '创建成功！' 
+            });
+            this.getTodolist();
+          } else {
+            this.$message.error('创建失败！');
+          }
+        }, (err) => {
+          this.$message.error('创建失败！');
+          console.log(err);
+        });
       this.todos = '';
     },
     finished(index) {
@@ -134,6 +151,19 @@ export default {
       } else {
         return null;
       }
+    },
+    getTodolist() {
+      this.$http.get('/api/todolist/' + this.name)
+        .then((res) => {
+          if (res.status == 200) {
+            this.list = res.data;
+          } else {
+            this.$message.error('获取列表失败！');
+          }
+        }, (err) => {
+          this.$message.error('获取列表失败！');
+          console.log(err);
+        })
     }
   }
 };

@@ -1,7 +1,7 @@
 const db = require('../config/db.js'),
       User = require('../schema/user.js');
 
-constTodolistDb = db.mongoose;
+const TodolistDb = db.mongoose;
 
 const getUserByUsername = function* (user_name) {
     const userinfo = yield User.find({username: user_name});
